@@ -400,44 +400,15 @@ console.log(" ");
 // - Since you want to return an object, be sure to pass an empty {} for the initial value of the "accumulator".
 
 // Enter your solution code here:
-let carCount = 0;
-let truckCount = 0;
-let bikeCount = 0;
-let walkCount = 0;
-let vanCount = 0;
 
-let test = travelMethods.map((method) => {
-  switch (method) {
-    case "car":
-      carCount++;
-      break;
-    case "truck":
-      truckCount++;
-      break;
-
-    case "bike":
-      bikeCount++;
-      break;
-
-    case "walk":
-      walkCount++;
-      break;
-
-    case "van":
-      vanCount++;
-      break;
-
-    default:
-      return;
+let travelMethodCounts = travelMethods.reduce((acc, value) => {
+  if (acc[value]) {
+    acc[value]++;
+  } else {
+    acc[value] = 1;
   }
-});
-let travelMethodCounts = {
-  car: carCount,
-  truck: truckCount,
-  bike: bikeCount,
-  walk: walkCount,
-  van: vanCount,
-};
+  return acc
+}, {});
 
 // Check your return value:
 console.log("Bonus 2 My Result: ", travelMethodCounts);
